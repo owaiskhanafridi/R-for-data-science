@@ -1,3 +1,5 @@
+#Sequence of execution: set-variables.R > get_acs_data.R
+
 # Function Definition Section-----------------------
 
 get_geo_data <- function(geo, file_name, state_list = NULL)
@@ -68,14 +70,9 @@ download_data <- function()
   write_to_file(execution_time, "execution_time")
 }
 
-
 # Function Execution Section-------------------
 
 #uncomment this code to debug this method
 #debug(download_data)
 
 download_data()
-
-
-
-

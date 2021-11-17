@@ -1,3 +1,5 @@
+#Sequence of execution: set-variables.R > get_acs_data.R
+
 # Packages & Dependencies Section ---------------------------------
 library(censusapi)
 
@@ -37,7 +39,3 @@ set_acs_vars = function()
 #debug(set_acs_vars)
 
 set_acs_vars()
-
-
-
-

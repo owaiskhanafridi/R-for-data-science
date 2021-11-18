@@ -1,5 +1,7 @@
 #Sequence of execution: set-variables.R > get_acs_data.R
 
+# I can write a function that accomplishes a common analysis task.
+
 # Function Definition Section-----------------------
 
 get_geo_data <- function(geo, file_name, state_list = NULL)

@@ -1,0 +1,115 @@
+---
+title: "Marketing_Analysis"
+author: "Owais Khan"
+date: "11/17/2021"
+output: html_document
+---
+
+
+#### I can explore new functions or packages and implement them into analyses
+
+install.packages("randomNames")
+```{r echo=FALSE}
+library(tidyverse)
+library(lubridate)
+library(randomNames)
+library(generator)
+```
+
+
+#### I can import data from a variety of file types
+
+```{r}
+marketing_data <- read_csv("~/STA 518/R-for-data-science/R-for-data-science/data/marketing_campaign.csv")
+```
+
+
+```{r}
+print(spec(marketing_data))
+```
+
+
+#### I can restructure information to be in a “tidy” format.
+
+```{r}
+#Eliminating unwanted variables
+marketing_data <- marketing_data %>% select(ID:NumWebVisitsMonth)
+
+#Calculating age of customers and the years since they're purchasing from given marketing data
+marketing_data <- marketing_data %>%
+  select(ID:NumWebVisitsMonth) %>%
+  mutate(age = year(today()) - Year_Birth, customer_since = year(today()) - year(Dt_Customer))
+
+#Removing all NA values from marketing dataset
+cleaned_marketing_data <- na.omit(marketing_data)
+
+#Generating customer data with unique ID's from marketing dataset
+customer_data <- marketing_data %>%
+  select(ID) %>%
+  mutate(first_name = randomNames(nrow(marketing_data), which.names="first"),
+         last_name = randomNames(nrow(marketing_data), which.names="last"),
+         email = paste0(first_name, "_", last_name, "@gmail.com"),
+         phone_number = r_phone_numbers(nrow(marketing_data)))
+```
+
+
+```{r}
+#Removing all NA values from marketing dataset
+cleaned_marketing_data <- na.omit(marketing_data)
+```
+
+#### I can combine information from multiple data sources.
+
+```{r}
+merged_data <- merge(x=cleaned_marketing_data,y=customer_data,by="ID")
+```
+
+#### I can restructure information to be in a “tidy” format.
+
+```{r}
+#Finding out contact information of top 10 customers with highest purchase of Meat products
+meat_lovers <- meat_lovers <- merged_data %>%
+  arrange(desc(MntMeatProducts)) %>%
+  head(10) %>%
+  select(ID, first_name, last_name, phone_number)
+
+print(meat_lovers)
+
+#Finding out contact information of top 10 customers with highest purchase of Sweet products
+sweet_lovers <- meat_lovers <- merged_data %>%
+  arrange(desc(MntSweetProducts)) %>%
+  head(10) %>%
+  select(ID, first_name, last_name, phone_number)
+
+print(sweet_lovers)
+
+#Finding contact information of top 100 lapsed customers (customer who hasn't returned to shop in a while)
+lapsed_customers <- merged_data %>%
+  arrange(desc(Recency)) %>%
+  head(100) %>%
+  mutate(no_purchase_since = Recency) %>%
+  select(ID, first_name, last_name, phone_number, no_purchase_since)
+
+print(lapsed_customers %>% head(10))
+
+```
+
+```{r}
+#Get mean of salaries as per education
+educational_income_mean <-group_by(merged_data, Education) %>% 
+  summarise(mean_income = mean(Income)) %>% 
+  arrange(desc(mean_income))
+
+print(educational_income_mean)
+```
+
+#### I can create graphical displays of data that highlight key features.
+
+```{r}
+ggplot(data = merged_data) + 
+  geom_point(mapping = aes(x = age, y = MntWines,  color = Marital_Status)) +
+  labs(title = "Wines purchased by different Age Groups", x = "Age", y = "Number of wines purchased")
+
+```
+
+

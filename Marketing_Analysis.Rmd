@@ -8,8 +8,8 @@ output: html_document
 
 #### I can explore new functions or packages and implement them into analyses
 
-install.packages("randomNames")
 ```{r echo=FALSE}
+install.packages("randomNames")
 library(tidyverse)
 library(lubridate)
 library(randomNames)

@@ -1,0 +1,52 @@
+---
+title: "success_failure"
+author: "Owais Khan"
+date: "11/17/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyr)
+library(tidyverse)
+library(reshape)
+```
+
+#### I can import data from a variety of sources.
+
+```{r}
+dataset <- read.csv(file = "~/STA 518/R-for-data-science/data/country_success_failure.txt", 
+                    header = TRUE, sep = ",")
+```
+
+#### I can write comments that explain the “why” (Why did you choose this approach instead of an alternative? What else did you try that didn’t work?) of my code.
+
+
+#### I can implement resampling methods to make conclusions about data.
+
+Make the data wider by transforming column variable into row 
+```{r}
+#I had to transform the data into wider shape so that I can have access to each variable in the same row and I can perform the calculation simply instead of looping through each value and finding each variable.
+wide_data <- pivot_wider(dataset, id_cols = c("ID", "NAME"), names_from = "variable", values_from = "estimate")
+```
+
+Rename variable ID to Id, NAME to Country, B01001_001 to Total, B01001_002 to Success & B01001_026 to Failure
+
+```{r}
+names(wide_data) <- c("Id" ,"Country", "Total", "Success", "Failure")
+```
+
+Calculate the success and failure rate from the respective variables.
+```{r}
+wide_data <- wide_data %>% mutate(Success_Rate = (Success/Total)*100, Failure_Rate = (Failure/Total)*100)
+print(wide_data)
+```
+
+```{r}
+#Mean success and failure rates throughout the countries
+means <- wide_data %>%  summarise(mean_success = mean(Success_Rate), mean_failure = mean(Failure_Rate))
+print(means)
+```

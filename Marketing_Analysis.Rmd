@@ -20,7 +20,7 @@ library(generator)
 #### I can import data from a variety of file types
 
 ```{r}
-marketing_data <- read_csv("~/STA 518/R-for-data-science/R-for-data-science/data/marketing_campaign.csv")
+marketing_data <- read_csv("~/STA 518/R-for-data-science/data/marketing_campaign.csv")
 ```
 
 
@@ -93,6 +93,8 @@ lapsed_customers <- merged_data %>%
 print(lapsed_customers %>% head(10))
 
 ```
+
+#### I can apply a function to groupings within a data source.
 
 ```{r}
 #Get mean of salaries as per education

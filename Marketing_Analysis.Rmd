@@ -5,6 +5,8 @@ date: "11/17/2021"
 output: html_document
 ---
 
+A marketining company has a data of its customer's purchases. They need to know which customers are interested in what product so that they can send them numerious promotions and deals specific to their interest. They also want to wake up those customers who hasn't made any purchase from the store by sending them discounted coupons and deal through their contact information.
+
 
 #### I can explore new functions or packages and implement them into analyses
 

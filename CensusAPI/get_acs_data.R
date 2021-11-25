@@ -79,4 +79,7 @@ download_data <- function()
 #uncomment this code to debug this method
 #debug(download_data)
 
+#removed all variables from session before making the download
+rm(list=ls())
+
 download_data()

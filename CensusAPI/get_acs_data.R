@@ -54,7 +54,9 @@ write_to_file <- function(data, file_name)
   )
 }
 
-#downloads all the data
+# I can import data from a variety of sources.
+
+# downloads all the data from Census API
 download_data <- function()
 {
   start_time = Sys.time()

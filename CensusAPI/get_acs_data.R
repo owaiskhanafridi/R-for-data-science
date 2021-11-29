@@ -1,5 +1,6 @@
 #Sequence of execution: set-variables.R > get_acs_data.R
 
+
 # I can write a function that accomplishes a common analysis task.
 
 # Function Definition Section-----------------------
@@ -70,6 +71,8 @@ download_data <- function()
   end_time = Sys.time()
   execution_time = end_time - start_time
   print(execution_time)
+ 
+# I can isolate information from a larger data source.
   
   write_to_file(execution_time, "execution_time")
 }

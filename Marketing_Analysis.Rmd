@@ -17,7 +17,6 @@ A marketining company has a data of its customer's purchases. They need to know 
 #### I can explore new functions or packages and implement them into analyses
 
 ```{r echo=FALSE}
-install.packages("randomNames")
 library(tidyverse)
 library(lubridate)
 library(randomNames)

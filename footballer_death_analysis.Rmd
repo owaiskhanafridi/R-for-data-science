@@ -71,7 +71,7 @@ From the above analysis, it can be clearly seen that most deaths are caused by t
 Creating a plot which helps analyzing the death not just based on the incident, but also the age of the player. The incident date is also kept in order to understand in which duration, most of the death took place.
 
 ```{r}
-combined %>%  ggplot(aes(incident_date, player_age, group = Incident_Type, color = Incident_Type)) +
+combined %>%  ggplot(aes(year(incident_date), player_age, group = Incident_Type, color = Incident_Type)) +
   geom_point() + 
   xlab("Incident Date") +
   ylab("Player Age") +
@@ -79,5 +79,5 @@ combined %>%  ggplot(aes(incident_date, player_age, group = Incident_Type, color
   labs(title = "Age vs Date with respect to Incident Type")
 ```
 
-Above plot helps us understand that most of the death caused (regardless of the incident type) are between 2000 and 2020 among which collapsed shows the highest rate. Although lightening seems to be very rare but there were no lightening deaths reported before the year 1980.
+Above plot helps us understand that most of the death caused (regardless of the incident type) are between 2000 and 2020 among which collapsed shows the highest rate. Although lightening seems to be very rare but there were no lightening deaths reported before the year 1975.
 

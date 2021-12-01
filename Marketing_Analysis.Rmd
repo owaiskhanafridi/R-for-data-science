@@ -8,6 +8,12 @@ output:
 ---
 
 
+#### I can write professional reports using R Markdown.
+
+
+A marketining company has a data of its customer's purchases. They need to know which customers are interested in what product so that they can send them numerious promotions and deals specific to their interest. They also want to wake up those customers who hasn't made any purchase from the store by sending them discounted coupons and deal through their contact information.
+
+
 #### I can explore new functions or packages and implement them into analyses
 
 ```{r echo=FALSE}
@@ -31,6 +37,7 @@ marketing_data <- read_csv("~/STA 518/R-for-data-science/data/marketing_campaign
 print(spec(marketing_data))
 ```
 
+#### Write clear, efficient, and well-documented R programs.
 
 #### I can restructure information to be in a “tidy” format.
 

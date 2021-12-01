@@ -1,5 +1,6 @@
 #Sequence of execution: set-variables.R > get_acs_data.R
 
+
 # I can write a function that accomplishes a common analysis task.
 
 # Function Definition Section-----------------------
@@ -54,7 +55,9 @@ write_to_file <- function(data, file_name)
   )
 }
 
-#downloads all the data
+# I can import data from a variety of sources.
+
+# downloads all the data from Census API
 download_data <- function()
 {
   start_time = Sys.time()
@@ -68,6 +71,8 @@ download_data <- function()
   end_time = Sys.time()
   execution_time = end_time - start_time
   print(execution_time)
+ 
+# I can isolate information from a larger data source.
   
   write_to_file(execution_time, "execution_time")
 }
@@ -76,5 +81,8 @@ download_data <- function()
 
 #uncomment this code to debug this method
 #debug(download_data)
+
+#removed all variables from session before making the download
+rm(list=ls())
 
 download_data()

@@ -11,7 +11,7 @@ output:
 #### I can explore new functions or packages and implement them into analyses
 
 ```{r echo=FALSE}
-# install.packages("randomNames")
+install.packages("randomNames")
 library(tidyverse)
 library(lubridate)
 library(randomNames)

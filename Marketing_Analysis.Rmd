@@ -2,18 +2,21 @@
 title: "Marketing_Analysis"
 author: "Owais Khan"
 date: "11/17/2021"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 
 #### I can explore new functions or packages and implement them into analyses
 
 ```{r echo=FALSE}
-install.packages("randomNames")
+# install.packages("randomNames")
 library(tidyverse)
 library(lubridate)
 library(randomNames)
 library(generator)
+library(data.table)
 ```
 
 
@@ -106,6 +109,7 @@ print(educational_income_mean)
 ```
 
 #### I can create graphical displays of data that highlight key features.
+
 
 ```{r}
 ggplot(data = merged_data) + 

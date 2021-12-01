@@ -1,0 +1,83 @@
+---
+title: "Footballer Death Analysis"
+author: "Owais Khan"
+date: "11/30/2021"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(lubridate)
+```
+
+###The goal is to analyse the data set which contains the death of footballers as per date and the type of incident which because the cause of their death.  
+
+
+#### I can import data from a variety of sources.
+
+```{r}
+football_deaths <- read.csv("~/STA 518/R-for-data-science/data/football_deaths.csv")
+```
+
+#### I can restructure information to be in a “tidy” format.
+
+Using 5 Boolean column which represents the type of incident and replacing them with a single Incident type column.
+
+```{r}
+data_by_incident <- football_deaths %>%
+gather(Incident_Type,j,-row_id)%>%
+filter(j==1)%>%
+select(-j) 
+```
+
+#### I can implement sampling methods to make conclusions about data
+
+Sampling out 5% random records of data_by_incident to help getting an idea of the data set's frequencies.
+
+```{r}
+sample_5 <- sample_frac(data_by_incident,0.05)
+print(sample_5)
+```
+
+#### I can combine information from multiple data sources.
+
+Combining the two data sets (actual football_deaths & data_by_incident) and replacing the 5 Boolean columns with the single incident_type column.
+
+```{r}
+combined <- merge(x=football_deaths,y=data_by_incident,by="row_id")
+
+combined <- combined %>% select(-heart_related, -cardiac_related, -collapsed, -lightning, collision)
+```
+
+#### I can create graphical displays of data that highlight key features.
+
+Drawing a bar plots to analyze the frequency of the occurrence of the type of incident which becomes the cause of footballer's death.
+
+```{r}
+x <- table(combined$Incident_Type)
+barplot(x)
+```
+
+From the above analysis, it can be clearly seen that most deaths are caused by the _collapsing_ of the football players while _lightnining_ shows the lowest number of occurrences. 
+
+
+Creating a plot which helps analyzing the death not just based on the incident, but also the age of the player. The incident date is also kept in order to understand in which duration, most of the death took place.
+
+```{r}
+combined %>%  ggplot(aes(incident_date, player_age, group = Incident_Type, color = Incident_Type)) +
+  geom_point() + 
+  xlab("Incident Date") +
+  ylab("Player Age") +
+  ggtitle(label = waiver()) +
+  labs(title = "Age vs Date with respect to Incident Type")
+```
+
+Above plot helps us understand that most of the death caused (regardless of the incident type) are between 2000 and 2020 among which collapsed shows the highest rate. Although lightening seems to be very rare but there were no lightening deaths reported before the year 1980.
+

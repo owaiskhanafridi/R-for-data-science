@@ -26,6 +26,11 @@ library(lubridate)
 football_deaths <- read.csv("~/STA 518/R-for-data-science/data/football_deaths.csv")
 ```
 
+```{r}
+#data cleaning. Omitting all NA values:
+football_deaths <- na.omit(football_deaths)
+```
+
 #### I can restructure information to be in a “tidy” format.
 
 Using 5 Boolean column which represents the type of incident and replacing them with a single Incident type column.

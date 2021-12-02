@@ -17,7 +17,7 @@ library(dplyr)
 library(lubridate)
 ```
 
-###The goal is to analyse the data set which contains the death of footballers as per date and the type of incident which because the cause of their death.  
+###The goal is to analyse the data set which contains the death of footballers as per date and the type of incident which become the cause of their death.  
 
 
 #### I can import data from a variety of sources.

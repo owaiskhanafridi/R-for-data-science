@@ -103,7 +103,7 @@ print(lapsed_customers %>% head(10))
 
 ```
 
-#### I can apply a function to groupings within a data source.
+#### I can create tables of numerical summaries that draw attention to important comparisons.
 
 ```{r}
 #Get mean of salaries as per education

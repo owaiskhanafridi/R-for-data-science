@@ -66,7 +66,7 @@ combined <- combined %>% select(-heart_related, -cardiac_related, -collapsed, -l
 Drawing a bar plots to analyze the frequency of the occurrence of the type of incident which becomes the cause of footballer's death.
 
 ```{r}
-#Analyzing the types of incident using a par plot
+#Analyzing the types of incident using a bar plot
 x <- table(combined$Incident_Type)
 barplot(x)
 ```

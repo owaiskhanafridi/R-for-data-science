@@ -83,7 +83,7 @@ combined %>%  ggplot(aes(year(incident_date), player_age, group = Incident_Type,
   xlab("Incident Date") +
   ylab("Player Age") +
   ggtitle(label = waiver()) +
-  labs(title = "Incident Type with respect to Age vs Date")
+  labs(title = "Incident Type with respect to Age & Date")
 ```
 
 Above plot helps us understand that most of the death caused (regardless of the incident type) are between 2000 and 2020 among which collapsed shows the highest rate. Although lightening seems to be very rare but there were no lightening deaths reported before the year 1975.
